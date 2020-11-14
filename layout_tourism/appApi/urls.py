@@ -19,9 +19,11 @@ from .views import *
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('property', PropertyViewSet, basename='property_api')
+router.register('property', PropertyViewSet, basename='property-api')
+router.register('user', UserViewSet, 'user-api')
 
 urlpatterns = router.urls
+#urlpatterns.append(path('test/', TestView.as_view()))
 # urlpatterns = [
 #     path('', index),
 # ]

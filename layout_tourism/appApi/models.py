@@ -1,5 +1,6 @@
 from django.db import models
-
+from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 # Create your models here.
 
 
@@ -17,4 +18,5 @@ class Property(models.Model):
     img_url3 = models.URLField(blank=True)
     img_url4 = models.URLField(blank=True)
     img_url5 = models.URLField(blank=True)
-
+    pretenders_list = ArrayField(models.IntegerField(blank=True, null=True), blank=True, null=True, default=list) 
+    updated = models.DateTimeField(auto_now=True, blank=True)
