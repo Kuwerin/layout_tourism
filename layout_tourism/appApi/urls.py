@@ -16,7 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from .views import *
+from rest_framework.routers import DefaultRouter
 
-urlpatterns = [
-    path('', index),
-]
+router = DefaultRouter()
+router.register('property', PropertyViewSet, basename='property_api')
+
+urlpatterns = router.urls
+# urlpatterns = [
+#     path('', index),
+# ]

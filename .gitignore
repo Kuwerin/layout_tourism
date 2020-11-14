@@ -1,3 +1,5 @@
 .setupenv.sh
 env
 .git
+psql_data
+__pycache__
