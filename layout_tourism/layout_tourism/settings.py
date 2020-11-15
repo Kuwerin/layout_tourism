@@ -55,7 +55,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'rest_framework.authtoken',
     'corsheaders',
 
     'appApi', # API
@@ -80,13 +79,11 @@ MIDDLEWARE = [
 REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES':
             [
-            'rest_framework.authentication.TokenAuthentication',
-            'rest_framework.authentication.BasicAuthentication',
-            'rest_framework.authentication.SessionAuthentication',
+                'rest_framework_simplejwt.authentication.JWTAuthentication'
             ],
         'DEFAULT_PERMISSON_CLASSES':
             [
-            'rest_framework.permissions.SessionAuthentication'
+                'rest_framework.permissions.SessionAuthentication'
             ]
             }
 
