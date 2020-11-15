@@ -23,7 +23,7 @@ router.register('property', PropertyViewSet, basename='property-api')
 router.register('user', UserViewSet, 'user-api')
 
 urlpatterns = router.urls
-#urlpatterns.append(path('test/', TestView.as_view()))
+urlpatterns.append(path('search/', SearchUserByNameView.as_view()))
 # urlpatterns = [
 #     path('', index),
 # ]

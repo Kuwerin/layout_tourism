@@ -32,3 +32,10 @@ class PropertyViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+class SearchUserByNameView(APIView):
+    def get(self, request):
+        user_name = request.GET.get('username', '')
+        users = User.objects.filter(username=user_name)
+        serializer = UserSerializer(users, many=True)
+        return Response({'users':serializer.data})
