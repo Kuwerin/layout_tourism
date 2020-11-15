@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 
     'appApi', # API
@@ -70,8 +71,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    'django.middleware.common.CommonMiddleware',
 ]
 
 
@@ -80,9 +79,14 @@ MIDDLEWARE = [
 
 REST_FRAMEWORK = {
         'DEFAULT_AUTHENTICATION_CLASSES':
-        [
+            [
+            'rest_framework.authentication.TokenAuthentication',
             'rest_framework.authentication.BasicAuthentication',
             'rest_framework.authentication.SessionAuthentication',
+            ],
+        'DEFAULT_PERMISSON_CLASSES':
+            [
+            'rest_framework.permissions.SessionAuthentication'
             ]
             }
 

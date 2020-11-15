@@ -17,13 +17,18 @@ from django.contrib import admin
 from django.urls import path, include
 from .views import *
 from rest_framework.routers import DefaultRouter
+from rest_framework.authtoken import views
 
 router = DefaultRouter()
 router.register('property', PropertyViewSet, basename='property-api')
 router.register('user', UserViewSet, 'user-api')
 
 urlpatterns = router.urls
-urlpatterns.append(path('search/', SearchUserByNameView.as_view()))
+urls = [
+        path('search/', SearchUserByNameView.as_view()),
+        path('apitoken/', views.obtain_auth_token)
+        ]
+[urlpatterns.append(url) for url in urls]
 # urlpatterns = [
 #     path('', index),
 # ]

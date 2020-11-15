@@ -23,14 +23,14 @@ class Property(models.Model):
     pretenders_list = ArrayField(models.IntegerField(blank=True, null=True), blank=True, null=True, default=list) 
     updated = models.DateTimeField(auto_now=True, blank=True)
 
-    def save(self, *args, **kwargs):
-        users = User.objects.all()
-        user_email_list = [user.email for user in users]
-        send_mail('Новая запись в разделе недвижимость!',
-                f'Здравствуйте, появилась новая недвижимость!'
-                f'{self.name} - {self.owner}\n{self.state_description}',
-                settings.EMAIL_HOST_USER,
-                user_email_list, fail_silently=False)
-
-        print('sent!')
-        super().save(*args, **kwargs)
+#    def save(self, *args, **kwargs):
+#         users = User.objects.all()
+#         user_email_list = [user.email for user in users]
+#         send_mail('Новая запись в разделе недвижимость!',
+#                 f'Здравствуйте, появилась новая недвижимость!'
+#                 f'{self.name} - {self.owner}\n{self.state_description}',
+#                 settings.EMAIL_HOST_USER,
+#                 user_email_list, fail_silently=False)
+# 
+#         print('sent!')
+#         super().save(*args, **kwargs)

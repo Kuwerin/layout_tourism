@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework import viewsets
 from .models import *
 from .serializers import *
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 # Create your views here.
 
@@ -27,11 +27,16 @@ def index(request):
 class PropertyViewSet(viewsets.ModelViewSet):
     serializer_class = PropertySerializer
     queryset = Property.objects.all()
+    authentication_classes = (SessionAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
 
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+    authentication_classes = (SessionAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
 
 class SearchUserByNameView(APIView):
     def get(self, request):
